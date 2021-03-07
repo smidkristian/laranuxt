@@ -25,7 +25,7 @@ services:
     volumes:
       - './mysql:/var/lib/mysql'
     environment:
-      MYSQL_DATABASE: uniflow
+      MYSQL_DATABASE: $DATABASE_NAME
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
