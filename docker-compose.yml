@@ -40,7 +40,17 @@ services:
     container_name: php
     volumes:
       - './src:/var/www/html'
+    working_dir: /var/www/html/$LARAVEL_APP
     ports:
       - '9000:9000'
     networks:
       - laravel
+
+  # composer:
+  #   image: composer:2.0
+  #   container_name: composer
+  #   volumes:
+  #     - ./src:/var/www/html
+  #   working_dir: /var/www/html/laravel-json-api
+  #   networks:
+  #     - laravel
