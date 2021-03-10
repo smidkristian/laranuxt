@@ -8,4 +8,8 @@
 	define root directory based on your laravel app name
 4. install your laravel app to src/ 
 5. run - docker exec php sh - and set permissions:
-	chown -R $USER:www-data .
+	chown -R www-data:www-data .
+	exit
+6. go to src/laravelapp:
+	sudo chown -R $USER .
+		- I am not sure why but this set of permissions is safe and works
