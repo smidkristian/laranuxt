@@ -25,7 +25,7 @@ services:
     volumes:
       - './mysql:/var/lib/mysql'
     environment:
-      MYSQL_DATABASE: $DATABASE_NAME
+      MYSQL_DATABASE: json-api
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
@@ -40,17 +40,29 @@ services:
     container_name: php
     volumes:
       - './src:/var/www/html'
-    working_dir: /var/www/html/$LARAVEL_APP
+    working_dir: /var/www/html/json-api
     ports:
       - '9000:9000'
     networks:
       - laravel
 
   # composer:
-  #   image: composer:2.0
+  #   image: composer
   #   container_name: composer
   #   volumes:
   #     - ./src:/var/www/html
   #   working_dir: /var/www/html/laravel-json-api
   #   networks:
   #     - laravel
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - '4000:80'
+    depends_on: 
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+    networks: 
+      - laravel
