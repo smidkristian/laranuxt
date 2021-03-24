@@ -1,7 +1,10 @@
 version: '3'
+
 networks:
-  laravel: null
+  laravel:
+
 services:
+
   nginx:
     image: 'nginx:stable-alpine'
     container_name: nginx
@@ -15,6 +18,7 @@ services:
       - mysql
     networks:
       - laravel
+
   mysql:
     image: mysql
     container_name: mysql
@@ -25,14 +29,13 @@ services:
     volumes:
       - './mysql:/var/lib/mysql'
     environment:
-      MYSQL_DATABASE: json-api
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: uniflow
       MYSQL_ROOT_PASSWORD: password
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
       - laravel
+
   php:
     build:
       context: .
@@ -40,20 +43,44 @@ services:
     container_name: php
     volumes:
       - './src:/var/www/html'
-    working_dir: /var/www/html/json-api
+    working_dir: /var/www/html
     ports:
       - '9000:9000'
     networks:
       - laravel
 
-  # composer:
-  #   image: composer
-  #   container_name: composer
-  #   volumes:
-  #     - ./src:/var/www/html
-  #   working_dir: /var/www/html/laravel-json-api
-  #   networks:
-  #     - laravel
+  artisan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: artisan
+    volumes: 
+      - ./src:/var/www/html
+    depends_on: 
+      - mysql
+    working_dir: /var/www/html
+    entrypoint: ['/var/www/html/artisan']
+    networks: 
+      - laravel
+  
+  npm: 
+    image: node
+    container_name: npm
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ['npm']
+    networks:
+      - laravel
+
+  composer:
+    image: composer
+    container_name: composer
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    networks:
+      - laravel
 
   phpmyadmin:
     image: phpmyadmin
@@ -66,3 +93,5 @@ services:
       - PMA_HOST=mysql
     networks: 
       - laravel
+
+  
