@@ -23,7 +23,7 @@ services:
   mysql:
     build:
       context: .
-      dockerfile: Dockerfile_mysql
+      dockerfile: Dockerfile.mysql
     container_name: mysql
     restart: unless-stopped
     tty: true
