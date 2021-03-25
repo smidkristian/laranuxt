@@ -1,0 +1,6 @@
+FROM mysql:latest
+
+# Add docker user to avoid permission issues
+RUN addgroup doc
+RUN adduser --disabled-password --uid 1000 --ingroup doc doc
+USER doc
