@@ -17,14 +17,15 @@ return [
 
     'paths' => [
         'api/*',
+        'sanctum/csrf-cookie',
+
         'login',
-        // 'logout',
-        // 'register',
+        'logout',
+        'register',
         // 'user/password',
         // 'forgot-password',
         // 'reset-password',
-        'sanctum/csrf-cookie',
-        // 'user/profile-information',
+        'user/profile-information',
         // 'email/verification-notification',
     ],
 

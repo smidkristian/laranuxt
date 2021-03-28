@@ -42,9 +42,14 @@ export default {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:8088'
-      }
+        url: 'http://localhost:8888'
+      },
     }
+  },
+
+  axios: {
+    baseUrl: 'http://localhost:8888',
+    credentials: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

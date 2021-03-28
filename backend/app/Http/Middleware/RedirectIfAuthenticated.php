@@ -23,7 +23,9 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return response()->json('Authenticated', 200);
+                if ($request->expectsJson()) {
+                    return response()->json(['error' => 'SPA authtentication'], 200);
+                }
             }
         }
 
