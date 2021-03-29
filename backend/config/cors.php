@@ -21,12 +21,18 @@ return [
 
         'login',
         'logout',
-        'register',
+        // 'register',
         // 'user/password',
-        // 'forgot-password',
-        // 'reset-password',
-        'user/profile-information',
-        // 'email/verification-notification',
+        'forgot-password',
+        'reset-password',
+        'user/confirm-password',
+        // 'user/profile-information',
+        'email/verification-notification',
+        'user/two-factor-authentication',
+        'user/two-factor-recovery-codes',
+        'user/two-factor-qr-code',
+        'two-factor-challenge'
+
     ],
 
     'allowed_methods' => ['*'],

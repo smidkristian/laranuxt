@@ -6,6 +6,10 @@
             <input type="text" id="name" v-model="form.name" class="mb-2 rounded p-2" placeholder="name" />
             <input type="text" id="email" v-model="form.email" class="mb-2 rounded p-2" placeholder="email" />
             <button type=submit class="rounded py-1 px-4 my-1 text-xs bg-gray-400 text-white">Update</button>
+            <Nuxt-Link :to="{ name: 'delete-profile' }" 
+                class="flex justify-end text-xs text-gray-800 hover:text-gray-400 my-2">Delete account</Nuxt-Link>
+            <Nuxt-Link :to="{ name: 'two-factor' }" 
+                class="flex justify-end text-xs text-gray-800 hover:text-gray-400 my-2">Two factor authtentication</Nuxt-Link>
         </form>
     </div>
 </template>

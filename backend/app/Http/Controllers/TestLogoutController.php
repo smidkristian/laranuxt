@@ -7,14 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TestLogoutController extends Controller
 {
-    public function logout(Request $request)
+    public function test()
     {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return response()->json('Logged Out', 200);
+        dd(config('app.client'));
     }
 }
