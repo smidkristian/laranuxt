@@ -26,6 +26,9 @@ Route::middleware('auth:sanctum')
     ->get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
 ->name('verification.verify');
 
+
+// there is an issue with 'signed' middlevare while running the app in containers, so the emailVerification
+// function in config/fortify is turned off and needed routes for those functions here, not ideal
 Route::middleware(['auth:sanctum', 'throttle:6,1'])
     ->post('/email/verification-notification', [EmailVerificationController::class, 'resend'])
 ->name('verification.send');

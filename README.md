@@ -29,7 +29,7 @@ disable <code>'views'</code> in <code>config/fortify</code>, those the SPA will 
 when you are there, check which <code>'features'</code> you want to use
 
 go to <code>config/cors</code> and define the <code>'paths'</code> you will use, like 'login', 'register' and so on,
-also, very important part, set <code>'supports_credentials'</code> to <code>true</true>, that ensures that the Access-Control-Allow-Credentials header is set to true, read more about it https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
+also, very important part, set <code>'supports_credentials'</code> to <code>true</code>, that ensures that the Access-Control-Allow-Credentials header is set to true, read more about it https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
 
 when you are authenticated, laravel by default wants to send you to /home, change it in <code>RedirectIfAuthenticated</code>, put there something like <code>response()->json('Authenticated', 200)</code>, then you can later check the status in your SPA and push a route you wish
 

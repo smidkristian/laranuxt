@@ -47,7 +47,7 @@ services:
       - './src:/var/www/html'
     working_dir: /var/www/html
     ports:
-      - '9000:9000'
+      - '9001:9001'
     networks:
       - laravel
 

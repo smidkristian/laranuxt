@@ -25,7 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return response()->json(['message' => 'email verified api middleware']);
 });
-
 Route::middleware(['auth:sanctum', 'password.confirm'])->delete('/user', function (Request $request) {
     return $request->user()->delete();
 });
