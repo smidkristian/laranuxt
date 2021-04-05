@@ -2,6 +2,7 @@ version: '3'
 
 networks:
   laravel:
+  client:
 
 services:
 
@@ -65,15 +66,15 @@ services:
     networks: 
       - laravel
   
-  npm: 
-    image: node
-    container_name: npm
-    volumes:
-      - ./src:/var/www/html
-    working_dir: /var/www/html
-    entrypoint: ['npm']
-    networks:
-      - laravel
+  # npm: 
+  #   image: node
+  #   container_name: npm
+  #   volumes:
+  #     - ./src:/var/www/html
+  #   working_dir: /var/www/html
+  #   entrypoint: ['npm']
+  #   networks:
+  #     - laravel
 
   composer:
     image: composer
@@ -95,5 +96,19 @@ services:
       - PMA_HOST=mysql
     networks: 
       - laravel
+
+  nuxt:
+    image: node
+    container_name: nuxt
+    volumes:
+      - ./frontend:/usr/src/nuxt
+    working_dir: /usr/src/nuxt
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+    command: npm run build
+    networks: 
+      - client
 
   
