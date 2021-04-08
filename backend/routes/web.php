@@ -29,6 +29,8 @@ Route::middleware('auth:sanctum')
 
 // there is an issue with 'signed' middlevare while running the app in containers, so the emailVerification
 // function in config/fortify is turned off and needed routes for those functions here, not ideal
-Route::middleware(['auth:sanctum', 'throttle:6,1'])
+// UPDATE: it actually works even with signed middleware now, I guess it was because of the docker network, both api
+// and client have to be on the same network I guess, which could be a problem tho
+Route::middleware(['auth:sanctum', 'signed', 'throttle:6,1'])
     ->post('/email/verification-notification', [EmailVerificationController::class, 'resend'])
 ->name('verification.send');

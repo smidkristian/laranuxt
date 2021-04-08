@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  default:
+    external:
+      name: proxy
+
+services:
+    
+  nuxt:
+    build: 
+      context: ../
+      dockerfile: ./docker/Dockerfile.nuxt
+    volumes:
+      - '../:/usr/src/app'
+    ports:
+      - "8080:8080"

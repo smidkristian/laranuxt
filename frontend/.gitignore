@@ -88,3 +88,7 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Docker
+docker-compose.yml
+
