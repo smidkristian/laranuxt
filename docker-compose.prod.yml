@@ -12,7 +12,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - './src:/var/www/html'
+      - './backend:/var/www/html'
       - './nginx/default.conf:/etc/nginx/conf.d/default.conf'
     depends_on:
       - php
@@ -21,7 +21,9 @@ services:
       - laravel
 
   mysql:
-    image: mysql
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
     container_name: mysql
     restart: unless-stopped
     tty: true
@@ -30,10 +32,10 @@ services:
     volumes:
       - './mysql:/var/lib/mysql'
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: user
-      MYSQL_PASSWORD: secure_password
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: laravel
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
@@ -45,7 +47,7 @@ services:
       dockerfile: Dockerfile
     container_name: php
     volumes:
-      - './src:/var/www/html'
+      - './backend:/var/www/html'
     working_dir: /var/www/html
     ports:
       - '9001:9001'
@@ -58,7 +60,7 @@ services:
       dockerfile: Dockerfile
     container_name: artisan
     volumes: 
-      - ./src:/var/www/html
+      - ./backend:/var/www/html
     depends_on: 
       - mysql
     working_dir: /var/www/html
@@ -70,7 +72,7 @@ services:
   #   image: node
   #   container_name: npm
   #   volumes:
-  #     - ./src:/var/www/html
+  #     - ./backend:/var/www/html
   #   working_dir: /var/www/html
   #   entrypoint: ['npm']
   #   networks:
@@ -80,7 +82,7 @@ services:
     image: composer
     container_name: composer
     volumes:
-      - ./src:/var/www/html
+      - ./backend:/var/www/html
     working_dir: /var/www/html
     networks:
       - laravel
@@ -107,7 +109,7 @@ services:
       - "3000:3000"
     environment:
       HOST: 0.0.0.0
-    command: npm run build
+    entrypoint: ['npm']
     networks: 
       - client
 
