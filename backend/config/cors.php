@@ -26,7 +26,7 @@ return [
         'forgot-password',
         'reset-password',
         'user/confirm-password',
-        // 'user/profile-information',
+        'user/profile-information',
         'email/verification-notification',
         'user/two-factor-authentication',
         'user/two-factor-recovery-codes',

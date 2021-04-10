@@ -9,9 +9,8 @@ services:
     
   nuxt:
     build: 
-      context: ../
-      dockerfile: ./docker/Dockerfile.nuxt
-    volumes:
-      - '../:/usr/src/app'
+      context: .
+      dockerfile: Dockerfile.nuxt
     ports:
       - "8080:8080"
+    command: npm run start
