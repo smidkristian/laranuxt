@@ -38,8 +38,16 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/auth-next'
   ],
+
+  proxy: {
+    '/laravel': {
+      target: 'http://localhost:8888',
+      pathRewrite: { '^/laravel': '/' }
+    }
+  },
 
   auth: {
     strategies: {
