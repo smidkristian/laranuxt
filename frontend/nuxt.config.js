@@ -43,10 +43,7 @@ export default {
   ],
 
   proxy: {
-    '/laravel': {
-      target: 'http://localhost:8888',
-      pathRewrite: { '^/laravel': '/' }
-    }
+    //
   },
 
   auth: {
@@ -60,10 +57,14 @@ export default {
 
   axios: {
     baseUrl: 'http://localhost:8888',
+    // proxy: true,
     credentials: true
   },
 
+  loading: '@/components/Loading.vue',
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    //
   }
 }

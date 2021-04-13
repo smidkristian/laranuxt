@@ -4,7 +4,13 @@
             <h1 class="my-2 text-md text-gray-400">Update profile</h1>
 
             <input type="text" id="name" v-model="form.name" class="mb-2 rounded p-2" placeholder="name" />
+            <div v-if="errors && errors.name" class="text-xs mb-2 text-red-600">
+                <span>{{ errors.name[0] }}</span>
+            </div>
             <input type="text" id="email" v-model="form.email" class="mb-2 rounded p-2" placeholder="email" />
+            <div v-if="errors && errors.email" class="text-xs mb-2 text-red-600">
+                <span>{{ errors.email[0] }}</span>
+            </div>
             <button type=submit class="rounded py-1 px-4 my-1 text-xs bg-gray-400 text-white">Update</button>
             <Nuxt-Link :to="{ name: 'delete-profile' }" 
                 class="flex justify-end text-xs text-gray-800 hover:text-gray-400 my-2">Delete account</Nuxt-Link>
@@ -21,7 +27,8 @@
                 form: {
                     name: this.$auth.user.name,
                     email: this.$auth.user.email,
-                }
+                },
+                errors: null
             }
         },
         methods: {
@@ -32,7 +39,7 @@
 
                     await this.$auth.fetchUser()
                 } catch (error) {
-                    console.log(error);
+                    // this.errors = error.response.data.errors;
                 }
             },
         }
