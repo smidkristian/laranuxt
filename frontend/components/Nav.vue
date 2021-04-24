@@ -5,6 +5,8 @@
             <Nuxt-Link :to="{ name: 'index' }" class="px-2">Home</Nuxt-Link>
 
             <Nuxt-Link v-if="$auth.loggedIn" :to="{ name: 'dashboard' }" class="px-2">Dashboard</Nuxt-Link>
+
+            <Nuxt-Link to="admin/dashboard" class="px-2">Admin</Nuxt-Link>
         </div>
 
         <div class="flex">
