@@ -1,4 +1,5 @@
 <template>
+    <!-- asi trochu zbytecny mit special navlink component pro dva linky, ale zatim me nic lepsiho nenapadlo -->
     <NuxtLink :to="href" :class="classes" 
         class="inline-flex items-center px-2 py-2 leading-5 text-sm w-full">
         <slot></slot>

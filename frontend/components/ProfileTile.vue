@@ -1,5 +1,5 @@
 <template>
-    <NavLinkNB :href="{ name: 'admin-profile' }" :active="$route.name == 'admin-profile'">
+    <div class="flex">
         <div>
             <icons-profile></icons-profile>
         </div> 
@@ -11,7 +11,7 @@
                 View profile
             </span>
         </div>
-    </NavLinkNB>
+    </div>
 </template>
 
 <script>
