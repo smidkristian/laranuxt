@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+    default:
+        external: 
+            name: 'proxy'
+
+services: 
+    proxy: 
+        image: nginx:latest
+        container_name: proxy
+        hostname: proxy
+        ports: 
+            - '80:80'
+            - '443:443'
+        volumes: 
+            - './config/nginx:/etc/nginx'
