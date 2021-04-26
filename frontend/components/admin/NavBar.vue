@@ -12,33 +12,33 @@
         </div>
         <div v-bind:class="{'hidden': !showMenu, 'flex': showMenu}" class="flex flex-col justify-between flex-grow lg:flex">
             <ul class="flex flex-col px-2 pt-2 w-full">
-                <NavLink :href="{ name: 'admin-dashboard' }" :active="$route.name == 'admin-dashboard'">
+                <AdminNavLink :href="{ name: 'admin-dashboard' }" :active="$route.name == 'admin-dashboard'">
                     <icons-home></icons-home>Dashboard
-                </NavLink>
-                <NavLink :href="{ name: 'admin-leads' }" :active="$route.name == 'admin-leads'">    
+                </AdminNavLink>
+                <AdminNavLink :href="{ name: 'admin-leads' }" :active="$route.name == 'admin-leads'">    
                     <icons-leads></icons-leads>Leads
-                </NavLink>
-                <NavLink :href="{ name: 'admin-customers' }" :active="$route.name == 'admin-customers'">
+                </AdminNavLink>
+                <AdminNavLink :href="{ name: 'admin-customers' }" :active="$route.name == 'admin-customers'">
                     <icons-customers></icons-customers>Customers
-                </NavLink>
-                <NavLink :href="{ name: 'admin-events' }" :active="$route.name == 'admin-events'">
+                </AdminNavLink>
+                <AdminNavLink :href="{ name: 'admin-events' }" :active="$route.name == 'admin-events'">
                     <icons-events></icons-events>Events
-                </NavLink>
-                <NavLink :href="{ name: 'admin-pages' }" :active="$route.name == 'admin-pages'">
+                </AdminNavLink>
+                <AdminNavLink :href="{ name: 'admin-pages' }" :active="$route.name == 'admin-pages'">
                     <icons-pages></icons-pages>Pages
-                </NavLink>
+                </AdminNavLink>
             </ul>
             <div class="flex flex-col">
                 <div class="pl-1">
-                  <NavLinkBottom :href="{ name: 'admin-options'}" :active="$route.name == 'admin-options'">
+                  <AdminNavLinkBottom :href="{ name: 'admin-options'}" :active="$route.name == 'admin-options'">
                     <icons-settings></icons-settings>Options
-                  </NavLinkBottom>
+                  </AdminNavLinkBottom>
                 </div>
 
                 <div class="border-t shadow-inner">
-                  <NavLinkBottom :href="{ name: 'admin-profile' }" :active="$route.name == 'admin-profile'">
-                    <ProfileTile></ProfileTile>
-                  </NavLinkBottom>
+                  <AdminNavLinkBottom :href="{ name: 'admin-profile' }" :active="$route.name == 'admin-profile'">
+                    <AdminProfileTile></AdminProfileTile>
+                  </AdminNavLinkBottom>
                 </div>
             </div>
         </div>

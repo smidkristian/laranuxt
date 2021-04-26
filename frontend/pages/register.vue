@@ -59,7 +59,6 @@
                     })
 
                     await this.$nuxt.$loading.finish()
-                    this.loading = false
 
                 } catch (error) {
                     await this.$nuxt.$loading.finish()

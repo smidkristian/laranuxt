@@ -26,7 +26,6 @@ Route::middleware('auth:sanctum')
     ->get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
 ->name('verification.verify');
 
-
 // there is an issue with 'signed' middlevare while running the app in containers, so the emailVerification
 // function in config/fortify is turned off and needed routes for those functions here, not ideal
 // UPDATE: it actually works even with signed middleware now, I guess it was because of the docker network, both api
