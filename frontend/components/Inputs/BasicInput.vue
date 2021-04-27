@@ -3,7 +3,7 @@
         <label class="uppercase text-xs text-gray-400">
             {{ label }}
         </label>
-        <input :type="text" class="my-1 rounded py-1 px-2 border text-sm" />
+        <input :type="type" class="my-1 rounded py-1 px-2 border text-sm" />
     </div>
 </template>
 

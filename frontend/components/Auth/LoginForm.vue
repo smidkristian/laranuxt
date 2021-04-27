@@ -7,14 +7,14 @@
                 </div>
 
                 <div class="mb-2">
-                    <Input :type="'text'" :label="'E-mail'" id="email" v-model="form.email" />
+                    <InputsBasicInput :type="'email'" :label="'E-mail'" id="email" v-model="form.email" />
                     <div v-if="errors && errors.email" class="text-xs mb-2 text-red-600">
                         <span>{{ errors.email[0] }}</span>
                     </div>
                 </div>
 
                 <div class="mb-2">
-                    <Input :type="'text'" :label="'Password'" id="password" v-model="form.password" />
+                    <InputsBasicInput :type="'password'" :label="'Password'" id="password" v-model="form.password" />
                     <div v-if="errors && errors.password" class="text-xs mb-2 text-red-600">
                         <span>{{ errors.password[0] }}</span>
                     </div>
