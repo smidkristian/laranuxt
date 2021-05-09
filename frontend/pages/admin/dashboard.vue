@@ -11,7 +11,7 @@
                 Show Modal
             </button>
             <Modal :showing="modalShowing" @close="modalShowing = false">
-                <AuthRegisterForm></AuthRegisterForm>
+                <AdminRegisterForm></AdminRegisterForm>
             </Modal>
         </div>
     </div>

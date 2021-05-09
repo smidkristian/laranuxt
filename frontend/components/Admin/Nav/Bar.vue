@@ -16,7 +16,7 @@
                     <icons-home />Dashboard
                 </AdminNavLink>
 
-                <AdminNavLinkDropdown :href="{ name: 'admin-leads' }" :active="$route.name == 'admin-leads'">
+                <AdminNavLinkDropdown :href="{ name: 'admin-leads' }" :sublinks="leadsSublinks" :active="$route.name == 'admin-leads'">
                   <icons-leads />Leads
                 </AdminNavLinkDropdown>
 
@@ -39,7 +39,7 @@
 
                 <div class="border-t shadow-inner">
                   <AdminNavLinkBottom :href="{ name: 'admin-profile' }" :active="$route.name == 'admin-profile'">
-                    <AdminProfileTile />
+                    <AdminNavProfileTile />
                   </AdminNavLinkBottom>
                 </div>
             </div>
@@ -53,7 +53,22 @@ export default {
   data() {
     return {
       showMenu: false,
-      showDropdown: false
+      showDropdown: false,
+
+      leadsSublinks: [
+                    {
+                        title: 'All leads',
+                        link: 'admin-leads-all'
+                    },
+                    {
+                        title: 'Add New Lead',
+                        link: 'admin-leads-add'
+                    },
+                    {
+                        title: 'Export',
+                        link: 'admin-leads-export'
+                    }
+                ]
     }
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
-    <div class="w-full max-w-xs">
+    <div class="flex flex-col">
         <div class="flex flex-col items-center bg-white rounded-t-md shadow">
-            <form @submit.prevent="login" class="flex flex-col bg-white rounded w-full px-12">
+            <form @submit.prevent="login" class="flex flex-col bg-white rounded-t-md w-full px-12">
                 <div class="flex justify-center">
                     <logos-login-form></logos-login-form>
                 </div>

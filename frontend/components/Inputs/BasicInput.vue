@@ -3,16 +3,20 @@
         <label class="uppercase text-xs text-gray-400">
             {{ label }}
         </label>
-        <input :type="type" class="my-1 rounded py-1 px-2 border text-sm" />
+        <input :type="type" 
+            v-bind:value="value"
+            v-on:input="$emit('input', $event.target.value)" 
+            class="my-1 rounded py-1 px-2 border text-sm" />
     </div>
 </template>
 
 <script>
     export default {
-        props: {
-            type: String,
-            label: String
-        }
+        props: [
+            'type',
+            'value',
+            'label'
+        ]
     }
 </script>
 

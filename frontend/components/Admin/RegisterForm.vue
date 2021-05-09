@@ -7,6 +7,13 @@
                         <h1 class="font-bold text-4xl mb-2 pb-4">Sign up</h1>
 
                         <div class="mb-2">
+                            <InputsBasicInput :type="'name'" :label="'Name'" id="name" v-model="form.name" />
+                            <div v-if="errors && errors.name" class="text-xs mb-2 text-red-600">
+                                <span>{{ errors.name[0] }}</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
                             <InputsBasicInput :type="'email'" :label="'E-mail'" id="email" v-model="form.email" />
                             <div v-if="errors && errors.email" class="text-xs mb-2 text-red-600">
                                 <span>{{ errors.email[0] }}</span>
@@ -53,6 +60,7 @@
         data() {
             return {
                 form: {
+                    name: '',
                     email: '',
                     password: '',
                     password_confirmation: ''
