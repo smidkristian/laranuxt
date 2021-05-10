@@ -9,6 +9,7 @@
         methods: {
             logout() {
                 this.$store.dispatch("auth/logout");
+                this.$router.replace({ name: 'website-login' });
             },
         }
     }

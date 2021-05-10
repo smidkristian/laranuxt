@@ -8,7 +8,8 @@
                     <slot></slot>
                 </div>
                 <div class="flex items-center" >
-                    <button @click="toggleDropdown" :class="classes"><icons-dropdown /></button>
+                    <icons-dropdown />
+                    <!-- <button @click="toggleDropdown" :class="classes"><icons-dropdown /></button> -->
                 </div>
 
             </NuxtLink>

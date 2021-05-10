@@ -12,9 +12,9 @@
                 <span>{{ errors.email[0] }}</span>
             </div>
             <button type=submit class="rounded py-1 px-4 my-1 text-xs bg-gray-400 text-white">Update</button>
-            <Nuxt-Link :to="{ name: 'delete-profile' }" 
+            <Nuxt-Link :to="{ name: 'website-delete-profile' }" 
                 class="flex justify-end text-xs text-gray-800 hover:text-gray-400 my-2">Delete account</Nuxt-Link>
-            <Nuxt-Link :to="{ name: 'two-factor' }" 
+            <Nuxt-Link :to="{ name: 'website-two-factor' }"
                 class="flex justify-end text-xs text-gray-800 hover:text-gray-400 my-2">Two factor authtentication</Nuxt-Link>
         </form>
     </div>
@@ -39,7 +39,7 @@
 
                     await this.$auth.fetchUser()
                 } catch (error) {
-                    // this.errors = error.response.data.errors;
+                    this.errors = error.response.data.errors;
                 }
             },
         }

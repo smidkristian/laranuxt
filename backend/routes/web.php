@@ -22,14 +22,14 @@ Route::get('/', function () {
 
 Route::get('/test', [TestLogoutController::class, 'test']);
 
-Route::middleware('auth:sanctum')
+// there is an issue with ", 'signed'" middlevare while running the app in containers, so the emailVerification
+// function in config/fortify is turned off and needed routes for those functions here, not ideal
+// UPDATE: it actually works even with signed middleware now, I guess it was because of the docker network, both api
+// and client have to be on the same network, which could be a problem tho, idk yet
+Route::middleware(['auth:sanctum', 'throttle:6,1'])
     ->get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
 ->name('verification.verify');
 
-// there is an issue with 'signed' middlevare while running the app in containers, so the emailVerification
-// function in config/fortify is turned off and needed routes for those functions here, not ideal
-// UPDATE: it actually works even with signed middleware now, I guess it was because of the docker network, both api
-// and client have to be on the same network I guess, which could be a problem tho
-Route::middleware(['auth:sanctum', 'signed', 'throttle:6,1'])
+Route::middleware(['auth:sanctum', 'throttle:6,1'])
     ->post('/email/verification-notification', [EmailVerificationController::class, 'resend'])
 ->name('verification.send');

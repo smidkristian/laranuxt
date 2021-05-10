@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Closure;
+use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;

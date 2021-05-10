@@ -35,11 +35,11 @@
                 recoveryCodes: null
             }
         },
-        async mounted() {
-            if( this.$auth.user.two_factor_enabled ) {
-                this.getRecoveryCodes();
-            }
-        },
+        // async mounted() {
+        //     if( this.$auth.user.two_factor_enabled ) {
+        //         this.getRecoveryCodes();
+        //     }
+        // },
         methods: {
             async enableTwoFactorAuthtentication() {
                 try {
@@ -49,6 +49,7 @@
                     await this.$auth.fetchUser()
 
                     this.qrCode = (await this.$axios.get('user/two-factor-qr-code')).data.svg
+                    this.recoveryCodes = (await this.$axios.get('user/two-factor-recovery-codes')).data
 
                 } catch (error) {
                    //
@@ -64,9 +65,9 @@
                 }
             },
 
-            async getRecoveryCodes() {
-                this.recoveryCodes = (await this.$axios.get('user/two-factor-recovery-codes')).data
-            }
+            // async getRecoveryCodes() {
+            //     this.recoveryCodes = (await this.$axios.get('user/two-factor-recovery-codes')).data
+            // }
         }
     }
 </script>

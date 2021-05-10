@@ -11,7 +11,7 @@
                 <span>{{ errors.password[0] }}</span>
             </div>
             <div class="flex justify-end my-1">
-                <Nuxt-Link :to="{ name: 'forgot-password' }" class="text-xs text-gray-800 hover:text-gray-400">I forgot my password</Nuxt-Link>
+                <Nuxt-Link :to="{ name: 'website-forgot-password' }" class="text-xs text-gray-800 hover:text-gray-400">I forgot my password</Nuxt-Link>
             </div>
             <button type=submit class="rounded py-1 px-4 my-2 text-xs bg-gray-400 text-white">Confirm</button>
         </form>
