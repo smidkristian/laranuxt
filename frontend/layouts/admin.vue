@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col lg:grid lg:grid-cols-8 h-screen">
-      <div class="w-full lg:grid lg:col-span-1">
+  <div class="flex flex-col lg:grid lg:grid-cols-8 h-screen bg-gray-100">
+      <div class="w-full lg:grid lg:col-span-1 min-w-min">
         <AdminNavBar/>
       </div>
 

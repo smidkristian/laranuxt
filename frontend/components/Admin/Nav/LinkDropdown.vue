@@ -14,9 +14,11 @@
 
             </NuxtLink>
         </div>
-        <div v-if="showSubLinks || $route.name.includes('admin-leads')" class="text-gray-900 text-sm bg-gray-50 rounded">
-            <ul class="flex flex-col ml-10" v-for="(link, index) in sublinks" :key="index">
-                <NuxtLink :to=" { name: link.link }" :class="{ 'underline' : $route.name.includes(link.link) }" 
+        <div v-if="showSubLinks || $route.name.includes('admin-leads')" class="text-gray-900 text-sm pb-2 border-b">
+            <ul class="flex flex-col ml-10">
+                <NuxtLink :to=" { name: link.link }"
+                    v-for="(link, index) in sublinks" :key="index"
+                    :class="{ 'underline' : $route.name.includes(link.link) }" 
                     class="px-2 py-1 hover:underline">{{ link.title }}</NuxtLink>
             </ul>
         </div>
