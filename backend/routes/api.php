@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\UserResource;
@@ -39,5 +40,8 @@ Route::post('/register', [UserController::class, 'create']);
 // roles and permissions
 Route::middleware('auth:sanctum')->post('/create-permission', [PermissionController::class, 'createPermission']);
 Route::middleware('auth:sanctum')->post('/create-role', [PermissionController::class, 'createRole']);
+
+// leads
+Route::get('/leads', [LeadController::class, 'listAll']);
 
 

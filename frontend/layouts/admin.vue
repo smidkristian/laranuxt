@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col lg:grid lg:grid-cols-8 h-screen bg-gray-100">
-      <div class="w-full lg:grid lg:col-span-1 min-w-min">
+  <div class="flex flex-col h-screen lg:flex-row bg-gray-100">
+      <div class="w-full lg:w-56">
         <AdminNavBar/>
       </div>
 
-      <div class="bg-gray-100 h-full lg:grid lg:col-span-7">
+      <div class="bg-gray-100 w-full">
         <Nuxt />
       </div>
   </div>
