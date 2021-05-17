@@ -3,7 +3,7 @@
     <looping-rhombuses-spinner
       :animation-duration="2500"
       :rhombus-size="15"
-      color="#e2e2e2"
+      color="#EB322F"
     />
   </div>
 </template>

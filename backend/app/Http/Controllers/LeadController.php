@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class LeadController extends Controller
 {
     public function listAll() {
-        return Lead::all();
+        return Lead::all()->chunk(7);
     }
 }
