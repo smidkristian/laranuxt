@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-center items-center h-screen">
-        <AuthLoginForm></AuthLoginForm>
+    <div class="flex justify-center items-center h-screen w-screen">
+        <FormLogin></FormLogin>
     </div>
 </template>
 

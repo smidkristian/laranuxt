@@ -42,10 +42,6 @@ export default {
     '@nuxtjs/auth-next'
   ],
 
-  proxy: {
-    //
-  },
-
   auth: {
     strategies: {
       'laravelSanctum': {
@@ -61,7 +57,7 @@ export default {
     credentials: true
   },
 
-  loading: '@/components/Loading.vue',
+  loading: '@/components/Loading/Component.vue',
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

@@ -1,4 +1,4 @@
-# run it yourself
+## run it yourself
 
 1. open docker-compose file and define mysql environment to match your laravel .env environment
 2. open Dockerfile:
@@ -8,9 +8,11 @@
 5. docker-compose up -d --build
 6. interact with services through docker-compose run --rm command - for example: docker-compose run --rm artisan migrate - to run migrations
 
-# authtentication installation
+## install it yourself
 
-## backend
+### authtentication installation
+
+#### backend
 
 install laravel sanctum https://laravel.com/docs/8.x/sanctum
 
@@ -35,7 +37,19 @@ when you are authenticated, laravel by default wants to send you to /home, chang
 
 that should be all for the api so far
 
-## frontend
+#### frontend
+
+install npm dependencies <code>@nuxtjs/auth-next</code> and <code>@nuxtjs/axios</code>
+
+include them in <code>nuxt.config.js</code> modules 
+
+then add <code>auth</code> object to <code>nuxt.config.js</code> and set its <code>strategies</code> to <code>'laravelSanctum'</code>
+
+this strategy needs to have a <code>provider</code> which is <code>'laravel/sanctum'</code> and <code>url</code> of the Laravel API you are using set up
+
+after this add <code>axios</code> object with <code>baseUrl</code> which is the Laravel API again and <code>credentials</code> set to <code>true</code>
+
+
 
 
 

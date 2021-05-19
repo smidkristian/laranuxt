@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="loading-page fixed flex justify-center items-center" v-if="loading">
-    <looping-rhombuses-spinner
+    <LoadingSpinner
       :animation-duration="2500"
       :rhombus-size="15"
       color="#EB322F"
@@ -9,14 +9,10 @@
 </template>
 
 <script>
-    import { LoopingRhombusesSpinner } from '../node_modules/epic-spinners'
   export default {
     data: () => ({
       loading: false
     }),
-    components: {
-      LoopingRhombusesSpinner
-    },
     methods: {
       start() {
         this.loading = true

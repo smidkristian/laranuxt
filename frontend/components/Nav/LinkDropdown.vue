@@ -8,13 +8,12 @@
                     <slot></slot>
                 </div>
                 <div class="flex items-center" >
-                    <icons-dropdown />
-                    <!-- <button @click="toggleDropdown" :class="classes"><icons-dropdown /></button> -->
+                    <IconDropdown />
                 </div>
 
             </NuxtLink>
         </div>
-        <div v-if="showSubLinks || $route.name.includes('admin-leads')" class="text-gray-900 text-sm pb-2 border-b">
+        <div v-if="showSubLinks || $route.name.includes('admin-leads')" class="text-gray-900 text-sm pb-2 border-b mb-2">
             <ul class="flex flex-col ml-10">
                 <NuxtLink :to=" { name: link.link }"
                     v-for="(link, index) in sublinks" :key="index"
@@ -36,12 +35,6 @@
             return {
                 showSubLinks: false,
             }
-        },
-
-        methods: {
-            toggleDropdown: function() {
-                this.showSubLinks = !this.showSubLinks;
-            },
         },
         computed: {
             classes() {

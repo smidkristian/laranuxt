@@ -4,7 +4,7 @@
             <div class="flex text-left text-4xl font-bold border-b">
                 <h1 class="pb-6">Leads</h1>
             </div>
-            <AdminTableComponent :tableData="leads" :tableHeaders="ths" class="mt-6" />
+            <TableComponent :tableData="leads" :tableHeaders="ths" class="mt-6" />
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-screen lg:flex-row bg-gray-100">
       <div class="w-full lg:w-56">
-        <AdminNavBar/>
+        <NavBar/>
       </div>
 
       <div class="bg-gray-100 w-full">

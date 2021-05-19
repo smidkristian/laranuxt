@@ -9,7 +9,7 @@
             <div class="flex flex-col bg-white p-2 rounded-md max-w-content shadow-lg">
                 <div class="flex justify-end">
                     <button @click.prevent="close" class="text-xl text-gray-500 p-2" aria-label="close">
-                        <icons-close></icons-close>
+                        <IconClose />
                     </button>
                 </div>
                 <slot />

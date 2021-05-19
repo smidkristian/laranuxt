@@ -1,8 +1,8 @@
 <template>
     <div class="w-full bg-gray-50 overflow-x-auto rounded shadow">
         <table class="table-auto w-full mx-auto text-sm">
-            <AdminTableHead :tableHeaders="tableHeaders" />
-            <AdminTableBody :tableData="tableData" :chunk="chunk" />
+            <TableHead :tableHeaders="tableHeaders" />
+            <TableBody :tableData="tableData" :chunk="chunk" />
         </table>
         <div class="flex justify-between">
             <div class="p-4">
@@ -37,7 +37,9 @@
                 this.chunk =  ( this.chunk + 1 ) % this.tableData.length;
             },
             previousChunk() {
-                this.chunk =  ( this.chunk - 1 ) % this.tableData.length;
+                if(this.chunk > 0) {
+                    this.chunk =  ( this.chunk - 1 ) % this.tableData.length;
+                }
             }
         }
     }

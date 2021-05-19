@@ -1,7 +1,7 @@
 <template>
     <div class="flex">
         <div>
-            <icons-profile></icons-profile>
+            <IconProfile />
         </div> 
         <div class="flex flex-col">
             <span class="font-bold">

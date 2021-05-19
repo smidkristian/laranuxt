@@ -7,37 +7,37 @@
                         <h1 class="font-bold text-4xl mb-2 pb-4">Sign up</h1>
 
                         <div class="mb-2">
-                            <InputsBasicInput :type="'name'" :label="'Name'" id="name" v-model="form.name" />
+                            <InputBasic :type="'name'" :label="'Name'" id="name" v-model="form.name" />
                             <div v-if="errors && errors.name" class="text-xs mb-2 text-red-600">
                                 <span>{{ errors.name[0] }}</span>
                             </div>
                         </div>
 
                         <div class="mb-2">
-                            <InputsBasicInput :type="'email'" :label="'E-mail'" id="email" v-model="form.email" />
+                            <InputBasic :type="'email'" :label="'E-mail'" id="email" v-model="form.email" />
                             <div v-if="errors && errors.email" class="text-xs mb-2 text-red-600">
                                 <span>{{ errors.email[0] }}</span>
                             </div>
                         </div>
 
                         <div class="mb-2">
-                            <InputsBasicInput :type="'password'" :label="'Password'" id="password" v-model="form.password" />
+                            <InputBasic :type="'password'" :label="'Password'" id="password" v-model="form.password" />
                             <div v-if="errors && errors.password" class="text-xs mb-2 text-red-600">
                                 <span>{{ errors.password[0] }}</span>
                             </div>
                         </div>
 
                         <div class="mb-2">
-                            <InputsBasicInput :type="'password'" :label="'Confirm Password'" id="password_confirmation" v-model="form.password_confirmation" />
+                            <InputBasic :type="'password'" :label="'Confirm Password'" id="password_confirmation" v-model="form.password_confirmation" />
                         </div>
 
                         <div class="mb-2">
-                            <InputsCheckbox name="gdpr" class="mb-2" :label="'I agree with GDPR'" />
-                            <InputsCheckbox name="terms" 
+                            <InputCheckbox name="gdpr" class="mb-2" :label="'I agree with GDPR'" />
+                            <InputCheckbox name="terms" 
                                 :label="'By signing up you will create GroupeSEB account which you can use also on our other pormo websites: promo.tefal.cz, promo.rowenta.cz, promo.wmf.cz, promo.krups.cz.'" />
                         </div>
                         
-                        <Button :type="'submit'" class="mt-2 mb-4">Sign up</Button>
+                        <ButtonBasic :type="'submit'" class="mt-2 mb-4">Sign up</ButtonBasic>
                     </form>
                 </div>
 

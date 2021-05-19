@@ -6,7 +6,7 @@
         <input :type="type" 
             v-bind:value="value"
             v-on:input="$emit('input', $event.target.value)" 
-            class="my-1 rounded py-1 px-2 border text-sm" />
+            class="my-1 rounded py-1 px-2 border text-sm focus:outline-none" />
     </div>
 </template>
 
