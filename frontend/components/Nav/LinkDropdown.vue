@@ -17,7 +17,7 @@
             <ul class="flex flex-col ml-10">
                 <NuxtLink :to=" { name: link.link }"
                     v-for="(link, index) in sublinks" :key="index"
-                    :class="{ 'underline' : $route.name.includes(link.link) }" 
+                    :class="{ 'underline' : $route.name == link.link }" 
                     class="px-2 py-1 hover:underline">{{ link.title }}</NuxtLink>
             </ul>
         </div>

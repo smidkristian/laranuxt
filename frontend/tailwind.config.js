@@ -1,10 +1,15 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extent: {
+    fontFamily: {
+      'inter': ['Inter var', ...defaultTheme.fontFamily.sans],
+    },
+    extend: {
       //
-    }
+    },
   },
   variants: {
     extend: {},

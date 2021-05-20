@@ -58,7 +58,7 @@ export default {
       leadsSublinks: [
                     {
                         title: 'All leads',
-                        link: 'admin-leads-all'
+                        link: 'admin-leads'
                     },
                     {
                         title: 'Add New Lead',
