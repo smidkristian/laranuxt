@@ -1,9 +1,9 @@
 <template>
     <tbody>
         <tr :key="index" v-for="(object, index) in tableData">
-            <td class="px-2"><input type="checkbox" class="border opacity-50 cursor-pointer"></td>
+            <td class="pl-3"><InputCheckbox /></td>
             <td :key="index" v-for="(keyName, index) in objectKeys"  @click="$emit('row-detail', object.id)"
-                class="text-left py-3 pl-3" 
+                class="text-left py-3 pl-2" 
                 :class="{   
                             'min-w-long' : keyName == 'customer',
                             'max-w-short' : keyName == 'country',
@@ -41,7 +41,7 @@
 <style scoped>
 
     tr {
-        border-bottom: solid 0.5px rgb(209, 209, 209);
+        border-bottom: solid 0.5px rgb(243, 244, 246);
         background-color: rgb(255, 255, 255);
     }
     tr:hover {

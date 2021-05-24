@@ -1,4 +1,20 @@
 <template>
+  <!-- 
+      USAGE:
+        <TableComponent
+            :tableHeaders="ths"
+            :tableData="leads"
+            :defaultSortBy="'id'" -> lowercase of the name of the header
+                you want to sort the table by
+            :tablePageSize="7"
+            :detailPageUrlName="'admin-lead-id'" -> parameter by which
+                the url is specified is set in Table/Head.vue component 
+        /> 
+      
+      DEPENDENCIES: 
+      InputCheckbox, IconDropdownSmall, ButtonBorder, IconLeft/Right
+    -->
+
     <div class="w-full overflow-x-auto rounded shadow">
         <table class="table-auto w-full mx-auto text-sm">
             <TableHead :tableHeaders="tableHeaders" @sort-by="sortBy($event)" />
@@ -14,23 +30,24 @@
     export default {
         props: [
             'tableHeaders',
-            'tableData'
+            'tableData',
+            'defaultSortBy',
+            'tablePageSize',
+            'detailPageUrlName'
         ],
         data() {
             return {
-                currentSortBy: 'id',
+                currentSortBy: this.defaultSortBy,
                 currentSortDir: 'asc',
-                tablePageSize: 10,
                 currentTablePage: 1,
-                detailPageUrlName: 'admin-leads-id'
             }
         },
         methods: {
             sortBy(header) {
                 // reversing order when clicking the same header twice
                 if(header.toLowerCase() === this.currentSortBy) {
-                    this.currentSortDir = this.currentSortDir === 'asc' 
-                        ? 'desc' 
+                    this.currentSortDir = this.currentSortDir === 'asc'
+                        ? 'desc'
                         : 'asc';
                 }
                 this.currentSortBy = header.toLowerCase();
@@ -44,7 +61,7 @@
             prevPage() {
                 if(this.currentTablePage > 1) this.currentTablePage--;
             }
-            
+
         },
         computed: {
             sortedTableData() {
@@ -61,7 +78,7 @@
             });
             },
             tablePageTotal() {
-                return this.tableData.length / this.tablePageSize
+                return Math.round(this.tableData.length / this.tablePageSize)
             }
         }
     }

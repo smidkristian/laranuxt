@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between">
-      <div class="flex p-3">
-          {{ currentTablePage }} of {{ tablePageTotal }}
+  <div class="flex justify-between bg-white text-gray-400">
+      <div class="flex p-3 ml-4">
+          {{ currentTablePage }} / {{ tablePageTotal }}
       </div>
       <div class="p-2">
           <ButtonBorder :type="'button'" @click.native="$emit('prev-page')">

@@ -1,11 +1,15 @@
 <template>
-    <div class="m-2 lg:m-10">
-        <div class="mt-20 lg:ml-10 w-full max-w-7xl">
-            <div class="flex text-left text-4xl font-bold border-b">
-                <h1 class="pb-4">Leads</h1>
-            </div>
-            <TableComponent :tableData="leads" :tableHeaders="ths" class="mt-6" />
+    <div class="w-full max-w-7xl">
+        <div class="flex text-left text-4xl font-bold border-b">
+            <h1 class="pb-4">Leads</h1>
         </div>
+        <TableComponent
+        :tableHeaders="ths"
+        :tableData="leads"
+        :defaultSortBy="'id'"
+        :tablePageSize="10"
+        :detailPageUrlName="'admin-leads-id'"
+        class="mt-6" />
     </div>
 </template>
 

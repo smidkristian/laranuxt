@@ -11,7 +11,7 @@ class LeadController extends Controller
         return Lead::all();
     }
     public function customerLeads() {
-        return Lead::select('date', 'brand', 'promoevent')->get()->chunk(5);
+        return Lead::select('date', 'brand', 'promoevent')->get();
     }
     public function leadDetail($id) {
         return Lead::findOrFail($id);
