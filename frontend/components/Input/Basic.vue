@@ -5,7 +5,8 @@
         </label>
         <input :type="type" 
             v-bind:value="value"
-            v-on:input="$emit('input', $event.target.value)" 
+            v-on:input="$emit('input', $event.target.value)"
+            :placeholder="placeholder"
             class="my-1 rounded py-1 px-2 border text-sm focus:outline-none" />
     </div>
 </template>
@@ -15,7 +16,8 @@
         props: [
             'type',
             'value',
-            'label'
+            'label',
+            'placeholder'
         ]
     }
 </script>
