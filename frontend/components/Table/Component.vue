@@ -16,9 +16,12 @@
     -->
 
     <div class="w-full overflow-x-auto rounded shadow">
+        <div class="max-w-xs m-2">
+            <InputBasic :type="'text'" v-model="searchQuery" :placeholder="'Search'" />
+        </div>
         <table class="table-auto w-full mx-auto text-sm">
             <TableHead :tableHeaders="tableHeaders" @sort-by="sortBy($event)" />
-            <TableBody :tableData="sortedTableData" @row-detail="rowDetail($event)" />
+            <TableBody :tableData="searchedTableData" @row-detail="rowDetail($event)" />
         </table>
         <TableNavigation :currentTablePage="currentTablePage" :tablePageTotal="tablePageTotal"
             @next-page="nextPage()" @prev-page="prevPage()"/>
@@ -40,6 +43,8 @@
                 currentSortBy: this.defaultSortBy,
                 currentSortDir: 'asc',
                 currentTablePage: 1,
+                // currentTablePageTotal: null,
+                searchQuery: null
             }
         },
         methods: {
@@ -60,6 +65,16 @@
             },
             prevPage() {
                 if(this.currentTablePage > 1) this.currentTablePage--;
+            },
+            filters(){
+                let arr = [];
+                this.sortedTableData.map( (item) => {
+                    Object.values(item).forEach( (value) => {
+                        if (value.toString().startsWith(this.searchQuery)) {
+                            arr.push(item);
+                        }
+                    })
+                })
             }
 
         },
@@ -72,6 +87,7 @@
                 if(a[this.currentSortBy] > b[this.currentSortBy]) return 1 * modifier;
                 return 0;
             }).filter((element, index) => {
+                // still not sure about this math
                 let start = (this.currentTablePage - 1) * this.tablePageSize;
                 let end = this.currentTablePage * this.tablePageSize;
                 if(index >= start && index < end) return true;
@@ -79,6 +95,22 @@
             },
             tablePageTotal() {
                 return Math.round(this.tableData.length / this.tablePageSize)
+            },
+            searchedTableData() {
+                if (this.searchQuery) {
+                    let searchResult = [];
+                    this.sortedTableData.map( (item) => {
+                        Object.values(item).forEach( (value) => {
+                            if (value.toString().toLowerCase().includes(this.searchQuery.toLowerCase())) {
+                                searchResult.push(item);
+                            }
+                        })
+                    })
+                    // this.currentTablePageTotal = searchResult.length;
+                    return searchResult;
+                } else {
+                    return this.sortedTableData;
+                }
             }
         }
     }
