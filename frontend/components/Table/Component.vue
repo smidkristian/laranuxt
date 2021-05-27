@@ -66,16 +66,6 @@
             prevPage() {
                 if(this.currentTablePage > 1) this.currentTablePage--;
             },
-            filters(){
-                let arr = [];
-                this.sortedTableData.map( (item) => {
-                    Object.values(item).forEach( (value) => {
-                        if (value.toString().startsWith(this.searchQuery)) {
-                            arr.push(item);
-                        }
-                    })
-                })
-            }
 
         },
         computed: {
