@@ -1,16 +1,25 @@
 <template>
     <tbody>
         <tr :key="index" v-for="(object, index) in tableData">
-            <td class="pl-3"><InputCheckbox /></td>
-            <td :key="index" v-for="(keyName, index) in objectKeys"  @click="$emit('row-detail', object.id)"
+            <td :key="index" v-for="(keyName, index) in objectKeys"
                 class="text-left py-3 pl-2" 
-                :class="{   
-                            'min-w-long' : keyName == 'customer',
-                            'max-w-short' : keyName == 'country',
-                            'max-w-long' : keyName == 'promoevent', 
+                :class="{
+                            'pl-6' : index == 0,
+                            'max-w-long' : keyName == 'promoevent',
                             'pr-4' : keyName == 'promoevent'
                         }">
                 {{ object[keyName] }}
+            </td>
+            <td class="pl-1">
+                <ButtonBasic>Show</ButtonBasic>
+            </td>
+            <td>
+                <ButtonIcon>
+                    <IconEdit />
+                </ButtonIcon>
+                <ButtonIcon>
+                    <IconTrash />
+                </ButtonIcon>
             </td>
         </tr>
     </tbody>

@@ -16,4 +16,7 @@ class LeadController extends Controller
     public function leadDetail($id) {
         return Lead::findOrFail($id);
     }
+    public function listProducts() {
+        return Lead::select('country', 'brand', 'promoevent', 'date')->get();
+    }
 }

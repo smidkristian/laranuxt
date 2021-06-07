@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-screen lg:flex-row bg-gray-100 font-inter">
-      <div class="w-full lg:w-64">
+      <div class="w-full lg:w-72">
         <NavBar/>
       </div>
 
