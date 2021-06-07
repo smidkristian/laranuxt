@@ -20,10 +20,10 @@
             <InputSearch :type="'text'" v-model="searchQuery" :placeholder="'Search'" />
         </div>
         <table class="table-auto w-full mx-auto text-sm">
-            <TableHead :tableHeaders="tableHeaders" @sort-by="sortBy($event)" />
-            <TableBody :tableData="searchedTableData" @row-detail="rowDetail($event)" />
+            <ActionTableHead :tableHeaders="tableHeaders" @sort-by="sortBy($event)" />
+            <ActionTableBody :tableData="searchedTableData" />
         </table>
-        <TableNavigation :currentTablePage="currentTablePage" :tablePageTotal="tablePageTotal"
+        <ActionTableNavigation :currentTablePage="currentTablePage" :tablePageTotal="tablePageTotal"
             @next-page="nextPage()" @prev-page="prevPage()"/>
     </div>
 </template>
@@ -36,16 +36,14 @@
             'tableData',
             'defaultSortBy',
             'tablePageSize',
-            'detailPageUrlName'
         ],
         data() {
             return {
                 currentSortBy: this.defaultSortBy,
                 currentSortDir: 'asc',
                 currentTablePage: 1,
-                currentTablePageTotal: null,
+                // currentTablePageTotal: null,
                 searchQuery: null
-                
             }
         },
         methods: {
@@ -58,62 +56,45 @@
                 }
                 this.currentSortBy = header.toLowerCase();
             },
-            rowDetail(id) {
-                this.$router.push({ name: this.detailPageUrlName, params: { id: id } });
-            },
             nextPage() {
                 if(this.currentTablePage < this.tablePageTotal) this.currentTablePage++;
             },
             prevPage() {
                 if(this.currentTablePage > 1) this.currentTablePage--;
             },
-            toSearchable(val) {
-                return val.toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
-            }
 
         },
         computed: {
             sortedTableData() {
-                return this.tableData.sort((a,b) => {
-                    let modifier = 1;
-                    if(this.currentSortDir === 'desc') modifier = -1;
-                    if(a[this.currentSortBy] < b[this.currentSortBy]) return -1 * modifier;
-                    if(a[this.currentSortBy] > b[this.currentSortBy]) return 1 * modifier;
-                    return 0;
-                }).filter((element, index) => {
-                    // still not sure about this math
-                    let start = (this.currentTablePage - 1) * this.tablePageSize;
-                    let end = this.currentTablePage * this.tablePageSize;
-                    if(index >= start && index < end) return true;
-                });
+            return this.tableData.sort((a,b) => {
+                let modifier = 1;
+                if(this.currentSortDir === 'desc') modifier = -1;
+                if(a[this.currentSortBy] < b[this.currentSortBy]) return -1 * modifier;
+                if(a[this.currentSortBy] > b[this.currentSortBy]) return 1 * modifier;
+                return 0;
+            }).filter((element, index) => {
+                // still not sure about this math
+                let start = (this.currentTablePage - 1) * this.tablePageSize;
+                let end = this.currentTablePage * this.tablePageSize;
+                if(index >= start && index < end) return true;
+            });
             },
             tablePageTotal() {
-                return this.currentTablePageTotal 
-                    ? this.currentTablePageTotal
-                    : Math.round(this.tableData.length / this.tablePageSize)
+                return Math.round(this.tableData.length / this.tablePageSize)
             },
             searchedTableData() {
                 if (this.searchQuery) {
                     let searchResult = [];
                     this.sortedTableData.map( (item) => {
                         Object.values(item).forEach( (value) => {
-                            if (this.toSearchable(value).includes(this.toSearchable(this.searchQuery)) && !(searchResult.includes(item))) {
+                            if (value.toString().toLowerCase().includes(this.searchQuery.toLowerCase())) {
                                 searchResult.push(item);
                             }
                         })
                     })
-                    // setting values with limits to the table page navigation numbers based on search results
-                    // this.currentTablePageTotal = Math.max((searchResult.length / this.tablePageSize), 1);
-                    // this.currentTablePageTotal = searchResult.length / this.tablePageSize;
-
-                    let filteredSearchResult = searchResult.filter((element, index) => {
-                        let start = (this.currentTablePage - 1) * this.tablePageSize;
-                        let end = this.currentTablePage * this.tablePageSize;
-                        if(index >= start && index < end) return true;
-                    });
-                    return filteredSearchResult;
+                    // this.currentTablePageTotal = searchResult.length;
+                    return searchResult;
                 } else {
-                    this.currentTablePageTotal = null;
                     return this.sortedTableData;
                 }
             }

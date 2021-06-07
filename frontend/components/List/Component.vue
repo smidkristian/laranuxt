@@ -26,13 +26,12 @@
                 Object.entries(this.object).forEach( ([key, value]) => {
                     if(this.filter.includes(key)) {
                         const upperkey = this.capitalize(key);
-                        console.log(upperkey)
                         this.filtered.push({upperkey, value});
                     }
                 });
             },
             capitalize(str) {
-                if(typeof str === 'string') {
+                if( typeof str === 'string' ) {
                     return str.replace(/^\w/, char => char.toUpperCase());
                 } else {
                     return 'Not a string';

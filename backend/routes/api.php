@@ -45,5 +45,6 @@ Route::middleware('auth:sanctum')->post('/create-role', [PermissionController::c
 Route::get('/leads', [LeadController::class, 'listAll']);
 Route::get('/customer-leads', [LeadController::class, 'customerLeads']);
 Route::get('/leads/{id}', [LeadController::class, 'leadDetail']);
+Route::get('/leads-products', [LeadController::class, 'listProducts']);
 
 
