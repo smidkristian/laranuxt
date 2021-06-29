@@ -16,8 +16,13 @@
     -->
 
     <div class="w-full overflow-x-auto rounded shadow">
-        <div class="max-w-xs m-2">
-            <InputSearch :type="'text'" v-model="searchQuery" :placeholder="'Search'" />
+        <div class="flex">
+            <div class="max-w-xs m-2">
+                <InputSearch :type="'text'" v-model="searchQuery" :placeholder="'Search'" />
+            </div>
+            <div class="flex items-center ml-6">
+                <ButtonTransparent @click.native="filtering('Country', 'Germany')">Filtr</ButtonTransparent>
+            </div>
         </div>
         <table class="table-auto w-full mx-auto text-sm">
             <TableHead :tableHeaders="tableHeaders" @sort-by="sortBy($event)" />
@@ -44,11 +49,25 @@
                 currentSortDir: 'asc',
                 currentTablePage: 1,
                 currentTablePageTotal: null,
-                searchQuery: null
+                searchQuery: null,
+                filtered: []
                 
             }
         },
         methods: {
+            filtering(filter, value) {
+                let filterResult = [];
+                this.tableData.map( (item) => {
+                    const entries = Object.entries(item);
+                    entries.map((entry) => {
+                        if (entry[0] == filter.toLowerCase() && entry[1] == value) {
+                            filterResult.push(item);
+                        }
+                    })
+                })
+                // return filterResult;
+                console.log(filterResult)
+            },
             sortBy(header) {
                 // reversing order when clicking the same header twice
                 if(header.toLowerCase() === this.currentSortBy) {
@@ -95,7 +114,7 @@
             searchedTableData() {
                 if (this.searchQuery) {
                     let searchResult = [];
-                    this.sortedTableData.map( (item) => {
+                    this.tableData.map( (item) => {
                         Object.values(item).forEach( (value) => {
                             if (this.toSearchable(value).includes(this.toSearchable(this.searchQuery)) && !(searchResult.includes(item))) {
                                 searchResult.push(item);
@@ -116,7 +135,7 @@
                     this.currentTablePageTotal = null;
                     return this.sortedTableData;
                 }
-            }
+            },
         }
     }
 </script>

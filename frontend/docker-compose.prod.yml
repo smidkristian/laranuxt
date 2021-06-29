@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 networks:
   default:
@@ -6,11 +6,12 @@ networks:
       name: proxy
 
 services:
-    
   nuxt:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.nuxt
+    container_name: admin_front
+    hostname: admin_front
     ports:
       - "8080:8080"
     command: npm run start

@@ -7,9 +7,10 @@ networks:
 
 services:
   proxy:
-    image: nginx:latest
+    image: nginx:stable-alpine
     container_name: proxy
     hostname: proxy
+    mem_limit: 300m
     ports:
       - "80:80"
       - "443:443"
