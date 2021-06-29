@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 networks:
   default:
@@ -6,15 +6,14 @@ networks:
       name: proxy
 
 services:
-
   nginx:
-    image: 'nginx:stable-alpine'
-    container_name: backed_server
+    image: "nginx:stable-alpine"
+    container_name: api_server
     ports:
-      - '8888:80'
+      - "8888:80"
     volumes:
-      - '../:/var/www/html'
-      - './nginx/default.conf:/etc/nginx/conf.d/default.conf'
+      - "../:/var/www/html"
+      - "./nginx/default.conf:/etc/nginx/conf.d/default.conf"
     depends_on:
       - php
       - mysql
@@ -27,14 +26,14 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - '4306:3306'
+      - "4306:3306"
     volumes:
-      - './mysql:/var/lib/mysql'
+      - "./mysql:/var/lib/mysql"
     environment:
       MYSQL_USER: user
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
-      MYSQL_DATABASE: database
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: groupeseb
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
 
@@ -44,10 +43,10 @@ services:
       dockerfile: Dockerfile
     container_name: php
     volumes:
-      - '../:/var/www/html'
+      - "../:/var/www/html"
     working_dir: /var/www/html
     ports:
-      - '9000:9000'
+      - "9000:9000"
 
   artisan:
     build:
@@ -59,7 +58,7 @@ services:
     depends_on:
       - mysql
     working_dir: /var/www/html
-    entrypoint: ['/var/www/html/artisan']
+    entrypoint: ["/var/www/html/artisan"]
 
   npm:
     image: node
@@ -67,7 +66,7 @@ services:
     volumes:
       - ../:/var/www/html
     working_dir: /var/www/html
-    entrypoint: ['npm']
+    entrypoint: ["npm"]
 
   composer:
     image: composer
@@ -80,7 +79,7 @@ services:
     image: phpmyadmin
     container_name: phpmyadmin
     ports:
-      - '4000:80'
+      - "4000:80"
     depends_on:
       - mysql
     environment:
@@ -88,6 +87,8 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
+    container_name: mailhog
+    hostname: mailhog
     restart: always
     ports:
       - 1025:1025

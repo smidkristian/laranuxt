@@ -47,13 +47,13 @@ export default {
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:8888'
+        url: 'http://api.localhost'
       },
     }
   },
 
   axios: {
-    baseUrl: 'http://localhost:8888',
+    baseUrl: 'http://api.localhost',
     // proxy: true,
     credentials: true
   },

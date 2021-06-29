@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16-buster
 
 WORKDIR /usr/src/app
 
@@ -9,7 +9,7 @@ COPY ./ ./
 
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 3000
 
 ENV HOST=0.0.0.0
-ENV PORT=8080
+ENV PORT=3000
